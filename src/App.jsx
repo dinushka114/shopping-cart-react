@@ -2,14 +2,15 @@ import axios from "axios";
 import React from "react"
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import Product from "./components/Product";
 import ProductList from "./components/ProductList";
-import { Grid } from "@material-ui/core";
+
 
 
 function App() {
     const [products, setProducts] = useState([])
+    const [cart , changeCart] = useState([])
     const [isLoading, setLoading] = useState(false);
+
 
     useEffect(() => {
         setLoading(true);
@@ -23,7 +24,7 @@ function App() {
         <div>
 
             <Header />
-            {isLoading ? <h1 style={{marginTop:100}}>Loading</h1> : <ProductList products={products} /> }
+            {isLoading ? <h1 style={{ marginTop: 100 }}>Loading</h1> : <ProductList products={products} />}
 
         </div>
     )
