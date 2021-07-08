@@ -2,8 +2,9 @@ import React from "react";
 import { AppBar, Toolbar, IconButton, Typography, Button, Badge } from "@material-ui/core";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ cartItems }) => {
     return (
 
         <AppBar position="fixed">
@@ -18,13 +19,15 @@ const Header = () => {
 
 
                 <div>
-                    <IconButton style={{ color: "white" }}>
-                        <Badge badgeContent={4} color="secondary">
-                            <ShoppingCartIcon />
-                        </Badge>
-                    </IconButton>
+                    <Link to="/checkout">
+                        <IconButton style={{ color: "white" }}>
+                            <Badge badgeContent={cartItems <= 0 ? `0` : cartItems} color="secondary">
+                                <ShoppingCartIcon />
+                            </Badge>
+                        </IconButton>
+                    </Link>
 
-                    <IconButton style={{color:"white"}}>
+                    <IconButton style={{ color: "white" }}>
                         <Badge badgeContent={4} color="secondary">
                             <MonetizationOnIcon />
                         </Badge>
